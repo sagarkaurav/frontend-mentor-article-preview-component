@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="./styles.css" rel="stylesheet">
+  <title>Frontend Mentor | Article preview component</title>
+</head>
+<body class="bg-gray-200 text-sm">
+  <div class="min-h-screen p-8 flex items-center justify-center">
+    <div class="max-w-xl flex flex-col lg:flex-row lg:inline-flex justify-around bg-white rounded-lg shadow-lg">
+      <div class="max-h-64 overflow-hidden rounded-l-lg">
+        <img src="images/drawers.jpg" class="w-full h-full object-fit object-top">
+      </div>      
+      <div class="pt-6 px-6">
+        <h5 class="font-bold text-gray-700 text-xl ">Shift the overall look and feel by adding these wonderful touches to furniture in your home</h5>
+        <p class="font-semibold pt-6 text-gray-600">Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.</p>
+        <div id="small-share-box" class="relative flex justify-between items-center py-6">
+          <div class="flex">
+            <img src="images/avatar-michelle.jpg" class="h-12 w-12 rounded-full mr-4">
+            <div>
+              <h3 class="text-gray-700 font-bold">Michelle Appleton</h3>
+              <p class="text-gray-500">28 Jun 2020</p>
+            </div>
+          </div>
+          <button class="share-btn p-2 rounded-full bg-gray-200">     
+            <img src="images/icon-share.svg" class="h-4 w-4">
+          </button>
+          <div id="big-screen-share" class="absolute hidden" style="top: -2rem; right: -4rem">
+            <div class="flex justify-space-between bg-gray-700 py-4 px-8 rounded-lg">
+              <span class="text-gray-500 font-bold mr-2">SHARE</span>
+              <img class="ml-2" src="images/icon-facebook.svg" >
+              <img class="ml-2" src="images/icon-twitter.svg" >
+              <img class="ml-2" src="images/icon-pinterest.svg" >
+            </div>
+            <svg class="text-gray-700 mx-auto -mt-3 pl-8" width="8em" height="2em" viewBox="0 0 16 16"  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div id="small-screen-share" class="sm:hidden flex justify-between items-center py-6 bg-gray-800 pt-6 px-8 rounded-b-lg">
+        <div class="flex">
+          <div>
+            <span class="text-gray-500 font-bold">SHARE</span>
+          </div>
+          <img class="ml-2" src="images/icon-facebook.svg" >
+          <img class="ml-2" src="images/icon-twitter.svg" >
+          <img class="ml-2" src="images/icon-pinterest.svg" >
+        </div>
+        <button class="share-btn p-2 rounded-full bg-gray-200">     
+          <img src="images/icon-share.svg" class="h-4 w-4">
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/sagarkaurav">Sagar Kaurav</a>.
+    <a href="https://github.com/sagarkaurav">Github</a><br><br><br><br>
+  </div>
+  <script>
+    window.onload= function() {
+      window.addEventListener('resize', function() {
+        let bigScreenShare = document.querySelector('#big-screen-share');
+        let smallScreenShare = document.querySelector('#small-screen-share');
+        let smallShareBox = document.querySelector('#small-share-box');
+        if(!bigScreenShare.classList.contains('hidden')){
+          bigScreenShare.classList.add('hidden');
+        }
+        if(!smallScreenShare.classList.contains('hidden')){
+          smallScreenShare.classList.add('hidden');
+        }
+        if(smallShareBox.classList.contains('hidden')) {
+          smallShareBox.classList.remove('hidden');
+        }        
+      });
+      let shareBtns = document.querySelectorAll('.share-btn');
+      shareBtns.forEach((shareBtn) => {
+        shareBtn.addEventListener('click', function() {
+          let bigScreenShare = document.querySelector('#big-screen-share');
+          let smallScreenShare = document.querySelector('#small-screen-share');
+          let smallShareBox = document.querySelector('#small-share-box');
+          if(window.innerWidth <= 500) {
+            if(smallScreenShare.classList.contains('hidden')) {
+              smallScreenShare.classList.remove('hidden');
+              smallShareBox.classList.add('hidden');
+            }
+            else{
+              smallScreenShare.classList.add('hidden');
+              smallShareBox.classList.remove('hidden');
+            }
+          }
+          else{
+            if(bigScreenShare.classList.contains('hidden')) {
+              bigScreenShare.classList.remove('hidden');
+            }
+            else{
+              bigScreenShare.classList.add('hidden');
+            }
+  
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
