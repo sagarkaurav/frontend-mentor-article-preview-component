@@ -9,7 +9,7 @@
     "tailwindcss": "^1.5.2"
   },
   "scripts": {
-    "build:dev": "postcss tailwindcss.css -o styles.css",
-    "build:prod": "NODE_ENV=production postcss tailwindcss.css -o styles.css"
+    "build:dev": "postcss src/tailwindcss.css -o public/css/styles.css",
+    "build:prod": "NODE_ENV=production postcss src/tailwindcss.css -o public/css/styles.css"
   }
 }
